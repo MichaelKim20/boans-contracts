@@ -1,10 +1,12 @@
 {
-  "name": "@ensdomains/ens-contracts",
+  "name": "@boansdomains/boans-contracts",
   "version": "0.0.9",
-  "description": "ENS contracts",
+  "description": "BOANS contracts",
   "scripts": {
     "test": "hardhat test",
     "test:local": "hardhat --network localhost test",
+    "test:michael": "hardhat --network michael test",
+    "deploy:michael": "hardhat --network michael deploy",
     "lint": "hardhat check",
     "build": "rm -rf ./build/deploy ./build/hardhat.config.js && hardhat compile && tsc",
     "prepublishOnly": "yarn build",
@@ -58,12 +60,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ensdomains/ens-contracts.git"
+    "url": "git+https://github.com/boansdomains/boans-contracts.git"
   },
   "author": "",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/ensdomains/ens-contracts/issues"
+    "url": "https://github.com/boansdomains/boans-contracts/issues"
   },
-  "homepage": "https://github.com/ensdomains/ens-contracts#readme"
+  "homepage": "https://github.com/boansdomains/boans-contracts#readme"
 }
