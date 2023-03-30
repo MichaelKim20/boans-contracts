@@ -20,7 +20,7 @@ contract DummyDnsRegistrarDNSSEC {
         bytes memory _proof
     ) public {
         Data storage rr = datas[
-            keccak256(abi.encodePacked(_expectedType, _expectedName))
+        keccak256(abi.encodePacked(_expectedType, _expectedName))
         ];
         rr.inception = _inception;
         rr.inserted = _inserted;
@@ -33,13 +33,13 @@ contract DummyDnsRegistrarDNSSEC {
     }
 
     function rrdata(uint16 dnstype, bytes memory name)
-        public
-        view
-        returns (
-            uint32,
-            uint64,
-            bytes20
-        )
+    public
+    view
+    returns (
+        uint32,
+        uint64,
+        bytes20
+    )
     {
         Data storage rr = datas[keccak256(abi.encodePacked(dnstype, name))];
         return (rr.inception, rr.inserted, rr.hash);

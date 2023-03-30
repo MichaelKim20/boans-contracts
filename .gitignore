@@ -7,3 +7,6 @@ gasreport-*
 node_modules
 build
 .idea/
+typechain-types
+.org/
+.npm

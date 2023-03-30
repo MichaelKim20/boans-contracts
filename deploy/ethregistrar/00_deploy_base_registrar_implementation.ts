@@ -3,6 +3,7 @@ import { ethers } from 'hardhat'
 import { DeployFunction } from 'hardhat-deploy/types'
 import { HardhatRuntimeEnvironment } from 'hardhat/types'
 import { keccak256 } from 'js-sha3'
+import { PublicResolver } from '../../typechain-types'
 
 const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
   const { getNamedAccounts, deployments, network } = hre
@@ -14,7 +15,6 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
   }
 
   const registry = await ethers.getContract('ENSRegistry')
-  const root = await ethers.getContract('Root')
 
   await deploy('BaseRegistrarImplementation', {
     from: deployer,
@@ -27,14 +27,6 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
   const tx1 = await registrar.addController(owner, { from: deployer })
   console.log(`Adding owner as controller to registrar (tx: ${tx1.hash})...`)
   await tx1.wait()
-
-  const tx2 = await root
-    .connect(await ethers.getSigner(owner))
-    .setSubnodeOwner('0x' + keccak256('eth'), registrar.address)
-  console.log(
-    `Setting owner of eth node to registrar on root (tx: ${tx2.hash})...`,
-  )
-  await tx2.wait()
 }
 
 func.id = 'registrar'

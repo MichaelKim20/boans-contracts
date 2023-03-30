@@ -2,6 +2,7 @@ import '@nomiclabs/hardhat-ethers'
 import '@nomiclabs/hardhat-solhint'
 import '@nomiclabs/hardhat-truffle5'
 import '@nomiclabs/hardhat-waffle'
+import '@typechain/hardhat'
 import { exec as _exec } from 'child_process'
 import dotenv from 'dotenv'
 import { existsSync } from 'fs'
@@ -154,6 +155,12 @@ const config: HardhatUserConfig = {
       url: 'http://127.0.0.1:8545',
       tags: ['use_root'],
       chainId: 34559,
+      accounts: real_accounts,
+    },
+    ether: {
+      url: `https://mainnet.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161`,
+      tags: ['legacy', 'use_root'],
+      chainId: 1,
       accounts: real_accounts,
     },
   },
